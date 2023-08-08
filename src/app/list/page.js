@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
+import { filterProducts } from '../../../lib/shopify';
 
 export default function ProductLists() {
   const [products, setProducts] = useState([])
@@ -7,7 +8,10 @@ export default function ProductLists() {
     async function fetchAllProducts() {
       const response = await fetch('/api/products');
       const data = await response.json();
-      setProducts(data);
+      console.log(data)
+      const productList = await filterProducts(data)
+      console.log(productList)
+      setProducts(productList);
     }
     fetchAllProducts();
   }, []);
