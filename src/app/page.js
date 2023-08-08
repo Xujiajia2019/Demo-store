@@ -8,6 +8,7 @@ import {SampleProducts} from '../components/SampleProducts';
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
 import { useEffect, useState } from 'react';
+import { supabase } from '/api'
 
 const renderComponent = (componentName, props) => {
   switch (componentName) {
@@ -32,13 +33,16 @@ export default function Index() {
   const [data, setData] = useState([])
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/api/getData`);
-      const result = await response.json();
-      if (response.ok) {
-        console.log(JSON.parse(result))
-        setData(JSON.parse(result));
+      let {data, error} = await supabase
+        .from('Page data')
+        .select('data')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single()
+      if (error) {
+        throw new Error(error);
       } else {
-        throw new Error(result.error);
+        setData(data.data)
       }
     };
     fetchData();
