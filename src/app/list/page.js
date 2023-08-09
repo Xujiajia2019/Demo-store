@@ -1,23 +1,11 @@
-"use client"
-import { useEffect, useState } from 'react';
-import { filterProducts } from '../../../lib/shopify';
 import Image from 'next/image';
+import { getProducts } from 'lib/shopify';
 
-export default function ProductLists() {
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    async function fetchAllProducts() {
-      const response = await fetch('/api/products');
-      const data = await response.json();
-      const productList = await filterProducts(data)
-      console.log(productList)
-      setProducts(productList);
-    }
-    fetchAllProducts();
-  }, []);
-
+export default async function ProductLists() {
+  const products = await getProducts()
+  console.log(products)
   return (
-    <section className='container py-8 mx-auto'>
+    <section className='container py-8 mx-auto px-4'>
       {products.length === 0 ? (
         <p className="py-3 text-lg">{`No products found in this collection`}</p>
       ) : (
