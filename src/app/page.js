@@ -5,8 +5,6 @@ import {ImageGrid} from '../components/ImageGrid';
 import {ImagewithText} from '../components/ImagewithText';
 import {Testimonial} from '../components/Testimonial';
 import {SampleProducts} from '../components/SampleProducts';
-import {Header} from '../components/Header';
-import {Footer} from '../components/Footer';
 import { useEffect, useState } from 'react';
 import { supabase } from '/api'
 
@@ -50,7 +48,7 @@ export default function Index() {
 
   return (
     <>
-    <Header />
+    
     <div>
       {data.map((item, index) => {
         console.log('render')
@@ -61,7 +59,6 @@ export default function Index() {
         );
       })}
     </div>
-    <Footer />
     </>
   );
 }
