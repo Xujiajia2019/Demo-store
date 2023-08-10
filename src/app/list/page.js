@@ -8,7 +8,13 @@ export default function ProductLists() {
   const [products, setProducts] = useState([])
   useEffect(() => {
     async function fetchAllProducts() {
-      const response = await fetch('/api/products');
+      const response = await fetch('/api/products', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({'PRODUCTS': 'XIXI'})
+      });
       const data = await response.json();
       setProducts(data);
     }
