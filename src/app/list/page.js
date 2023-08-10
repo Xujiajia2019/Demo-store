@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getProducts } from 'lib/shopify';
 
-export const dynamic = 'force-dynamic' 
+export const runtime = 'edge';
 
 export default async function ProductLists() {
   const products = await getProducts()

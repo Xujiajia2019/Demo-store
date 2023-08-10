@@ -1,9 +1,9 @@
-import { getAllProducts } from 'lib/shopify';
+import { getProducts } from 'lib/shopify';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const products = await getAllProducts();
+    const products = await getProducts();
     console.log(products)
     return NextResponse.json(products)
   } catch (error) {
