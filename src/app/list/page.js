@@ -1,10 +1,20 @@
+'use client'
 import Image from 'next/image';
-import { getProducts } from 'lib/shopify';
+// import { getProducts } from 'lib/shopify';
+import { useEffect, useState } from 'react';
 
-export const runtime = 'edge';
+export default function ProductLists() {
 
-export default async function ProductLists() {
-  const products = await getProducts()
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    async function fetchAllProducts() {
+      const response = await fetch('/api/products');
+      const data = await response.json();
+      setProducts(data);
+    }
+    fetchAllProducts();
+  }, [])
+
   console.log(products)
   return (
     <section className='container py-8 mx-auto px-4'>
