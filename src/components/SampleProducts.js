@@ -1,10 +1,28 @@
+'use client'
 import Image from 'next/image'
+import { useEffect, useState } from 'react';
+
 
 export function SampleProducts({
   heading,
   description,
   blocks,
 }) {
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    async function fetchAllProducts() {
+      const response = await fetch('/api/products', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({'PRODUCTS': 'XIXI'})
+      });
+      const data = await response.json();
+      setProducts(data);
+    }
+    fetchAllProducts();
+  }, [])
   return (
     <section className='container mx-auto flex px-5 py-8 flex-col items-center'>
       <div className="flex flex-col items-baseline justify-between gap-4 px-6 py-8 sm:px-8 md:px-12 dark:from-contrast/60 dark:text-primary from-primary/60">
@@ -15,26 +33,26 @@ export function SampleProducts({
           <p className="mb-5">{description.value}</p>
         )}
       </div>
-      <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-4">
-        {blocks.map((product, index) => (
-          product?.figure && (
-            <li key={index}>
-              <div className="card-image aspect-[4/5]">
-                <Image
-                  style={{height: "100%"}}
-                  className="object-cover w-full"
-                  src={product.figure.image.url}
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  alt="test"
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <h2 className="mt-4 font-medium">{product.title?.value}</h2>
-              <p className="font-medium">{product.price?.value}</p>
-            </li>
-          )))}
-      </ul>
+      <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+        {products.slice(0, 4).map((product) => (
+          <div key={product.id} className="card w-96 bg-base-100 shadow-xl">
+            <figure>
+              <Image
+                className="object-cover w-full"
+                src={product.featuredImage ? product.featuredImage.url : "https://cdn.shopifycdn.net/s/files/1/0723/7559/9411/files/img-placeholder.jpg?v=1685346613"}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                width={500}
+                height={500}
+                alt={product.title}
+              />   
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{product.title}</h2>
+              <a className='btn'>Buy now</a>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
