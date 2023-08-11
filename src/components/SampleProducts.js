@@ -52,7 +52,7 @@ export function SampleProducts({
           </div>
         ))}
       </div>
-      <a href='/list' className='btn'>View all</a>
+      <a href='/list' className='btn btn-primary mt-4'>View all</a>
     </section>
   );
 }
