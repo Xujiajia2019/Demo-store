@@ -48,11 +48,11 @@ export function SampleProducts({
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title">{product.title}</h2>
-              <a className='btn'>Buy now</a>
             </div>
           </div>
         ))}
       </div>
+      <a href='/list' className='btn'>View all</a>
     </section>
   );
 }
