@@ -1,4 +1,4 @@
-export function Header() {
+export function Header({ initialData }) {
   return (
     <div className="navbar bg-base-100 text-base-content">
       <div className="navbar-start">
@@ -13,7 +13,7 @@ export function Header() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl">Fastane</a>
+        {initialData.brandName && <a className="btn btn-ghost normal-case text-xl">{initialData.brandName}</a>}
       </div>
     </div>
   )

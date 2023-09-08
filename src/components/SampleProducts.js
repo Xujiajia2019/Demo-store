@@ -1,37 +1,23 @@
-'use client'
 import Image from 'next/image'
-import { useEffect, useState } from 'react';
 
-
-export function SampleProducts({
-  heading,
-  description,
-  blocks,
-}) {
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    async function fetchAllProducts() {
-      const response = await fetch('/api/products', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({'PRODUCTS': 'XIXI'})
-      });
-      const data = await response.json();
-      setProducts(data);
-    }
-    fetchAllProducts();
-  }, [])
+export function SampleProducts() {
+  async function fetchAllProducts() {
+    const response = await fetch('/api/products', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({'PRODUCTS': 'XIXI'})
+    });
+    const data = await response.json();
+   return data
+  }
+  const products = fetchAllProducts()
+  console.log(products)
   return (
     <section className='container mx-auto flex px-5 py-8 flex-col items-center'>
       <div className="flex flex-col items-baseline justify-between gap-4 px-6 py-8 sm:px-8 md:px-12 dark:from-contrast/60 dark:text-primary from-primary/60">
-        {heading?.value && (
-          <h1 className="mb-5 text-5xl font-bold">{heading.value}</h1>
-        )}
-        {description?.value && (
-          <p className="mb-5">{description.value}</p>
-        )}
+        <h1 className="mb-5 text-5xl font-bold">Featured products</h1>
       </div>
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4'>
         {products.slice(0, 4).map((product) => (
@@ -44,7 +30,7 @@ export function SampleProducts({
                 width={500}
                 height={500}
                 alt={product.title}
-              />   
+              />
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title">{product.title}</h2>
