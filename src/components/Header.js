@@ -1,4 +1,4 @@
-export function Header({ initialData }) {
+export function Header(initialData) {
   return (
     <div className="navbar bg-base-100 text-base-content">
       <div className="navbar-start">

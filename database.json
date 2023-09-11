@@ -1,23 +1,53 @@
 {
-  "brandName": "Fastlanexixi",
-  "homepageBanner": {
-    "props": {
-      "figure": {
-        "image": {
-          "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-js3ZCblXogMFzDrWFIf5Yyv2/user-28phehzqQ8USls9fVH3fLHu9/img-UyQIF8bZlboqZUnG9iCu68de.png?st=2023-08-06T14%3A52%3A12Z&se=2023-08-06T16%3A52%3A12Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-08-06T07%3A19%3A43Z&ske=2023-08-07T07%3A19%3A43Z&sks=b&skv=2021-08-06&sig=cX3YNputwzG53IT3Q%2BIVW9oEnA8vvfERH6f2jsiP6co%3D",
-          "altText": "Electric Bike Image",
-          "requirements": "An image of the main product, showcasing its design and features"
-        }
-      },
-      "heading": {
-        "value": "Get On Pedals with Power",
-        "requirements": "The name of a main product, attractive and short, most 8 words"
-      },
-      "description": {
-        "value": "Experience the joy of effortless and eco-friendly commuting with our top-notch E-bikes. Say goodbye to traffic congestion and embrace the freedom of pedal-assisted rides through any terrain. Discover a new way to explore and commute while reducing your carbon footprint. Embrace the future of transportation with our technologically advanced E-bikes.",
-        "requirements": "A brief description of the main product, unique selling point"
+  "brand": {
+    "basic_information": {
+      "brand_name": "Fastlane",
+      "vendor": "Fastlane",
+      "favicon": "",
+      "logo": ""
+    },
+    "brand_story": {
+      "brand_story": "Fastlane is a fastlane app that helps you to manage your fastlane projects. It helps you to manage your fastlane projects. It helps you to manage your fastlane projects. It helps you to manage your fastlane projects. It helps you to manage your fastlane projects. It helps you to manage your fastlane projects. It helps you to manage your fastlane projects. It helps you to manage your fastlane projects. It helps you to manage your",
+      "featured_image": ""
+    },
+    "contact": {
+      "email": "support@fstln.io",
+      "phone": "+23480323232323",
+      "address": "",
+      "facebook": "",
+      "twitter": "",
+      "linkedin": "",
+      "pinterest": "",
+      "instagram": "",
+      "youtube": "",
+      "tiktok": ""
+    }
+  },
+  "homepage_banner": {
+    "figure": {
+      "image": {
+        "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-js3ZCblXogMFzDrWFIf5Yyv2/user-28phehzqQ8USls9fVH3fLHu9/img-UyQIF8bZlboqZUnG9iCu68de.png?st=2023-08-06T14%3A52%3A12Z&se=2023-08-06T16%3A52%3A12Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-08-06T07%3A19%3A43Z&ske=2023-08-07T07%3A19%3A43Z&sks=b&skv=2021-08-06&sig=cX3YNputwzG53IT3Q%2BIVW9oEnA8vvfERH6f2jsiP6co%3D",
+        "altText": "Electric Bike Image"
       }
     },
-    "section": "ImageBanner"
+    "heading": {
+      "value": "Get On Pedals with Power"
+    },
+    "description": {
+      "value": "Experience the joy of effortless and eco-friendly commuting with our top-notch E-bikes. Say goodbye to traffic congestion and embrace the freedom of pedal-assisted rides through any terrain. Discover a new way to explore and commute while reducing your carbon footprint. Embrace the future of transportation with our technologically advanced E-bikes."
+    },
+    "seo_title": "",
+    "seo_description": ""
+  },
+  "design": {
+    "primary_color": "",
+    "color_schema": "",
+    "secondary_color": "",
+    "body_bg": "",
+    "text_color": "",
+    "font_family": "",
+    "google_font_family": "",
+    "customised_font_family": {},
+    "visual_style": ""
   }
 }
