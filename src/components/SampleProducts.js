@@ -1,19 +1,13 @@
 import Image from 'next/image'
+import { getProducts } from 'lib/shopify';
 
-export function SampleProducts() {
+export async function SampleProducts() {
   async function fetchAllProducts() {
-    const response = await fetch('/api/products', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({'PRODUCTS': 'XIXI'})
-    });
-    const data = await response.json();
-   return data
+    const response = await getProducts()
+    const data = response
+    return data
   }
-  const products = fetchAllProducts()
-  console.log(products)
+  const products = await fetchAllProducts()
   return (
     <section className='container mx-auto flex px-5 py-8 flex-col items-center'>
       <div className="flex flex-col items-baseline justify-between gap-4 px-6 py-8 sm:px-8 md:px-12 dark:from-contrast/60 dark:text-primary from-primary/60">
