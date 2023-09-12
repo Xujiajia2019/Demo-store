@@ -1,21 +1,49 @@
-export function Header(initialData) {
+import Link from 'next/link';
+// import LogoSquare from './LogoSquare';
+
+export function Header({ initialData }) {
   return (
-    <div className="navbar bg-base-100 text-base-content">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-          </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li><a href="/list">All products</a></li>
-            <li><a>About</a></li>
-          </ul>
+    <header>
+      <nav className="relative flex items-center justify-between p-4 lg:px-6">
+        <div className="block flex-none md:hidden">
+          
         </div>
-      </div>
-      <div className="navbar-center">
-        {initialData.brandName && <a className="btn btn-ghost normal-case text-xl">{initialData.brandName}</a>}
-      </div>
-    </div>
+        <div className="flex w-full items-center">
+          <div className="flex w-full md:w-1/3">
+            <Link href="/" className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6">
+                <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+                  {initialData?.brand?.basic_information?.brand_name}
+                </div>
+              {/* {initialData?.brand?.basic_information?.logo ? 
+                <LogoSquare url={initialData?.brand?.basic_information?.logo}/> :
+                <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+                  {initialData?.brand?.basic_information?.brand_name}
+                </div>
+              } */}
+            </Link>
+            <ul className="hidden gap-6 text-sm md:flex md:items-center">
+              {initialData?.products?.size > 9 ?
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                  >
+                    All products
+                  </Link>
+                </li> : null}
+              <li>
+                <Link
+                  href="/about"
+                  className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  About
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
   )
 }
 

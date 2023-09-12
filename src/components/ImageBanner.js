@@ -14,9 +14,7 @@ export function ImageBanner({
               <h1 className="mb-5 text-5xl font-bold">{heading.value}</h1>
             )}
             {description?.value && <p className="mb-5">{description.value}</p>}
-            {cta_1_text?.value && (
-              <button className="btn btn-primary">{cta_1_text.value}</button>
-            )}
+            <button className="btn btn-primary">Learn more</button>
           </div>
         </div>
       </div>

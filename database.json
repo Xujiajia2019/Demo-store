@@ -1,4 +1,5 @@
 {
+  "brand_name": "xixi",
   "brand": {
     "basic_information": {
       "brand_name": "Fastlane",
@@ -40,7 +41,7 @@
     "seo_description": ""
   },
   "design": {
-    "primary_color": "",
+    "primary_color": "red",
     "color_schema": "",
     "secondary_color": "",
     "body_bg": "",

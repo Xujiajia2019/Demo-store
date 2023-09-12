@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import { getProducts } from 'lib/shopify';
+import { Gallery } from '@components/products/Gallery';
+// import Link from 'next/link';
 
-export async function SampleProducts() {
+export async function FeaturedProducts() {
   async function fetchAllProducts() {
     const response = await getProducts()
     const data = response
@@ -14,22 +16,10 @@ export async function SampleProducts() {
         <h1 className="mb-5 text-5xl font-bold">Featured products</h1>
       </div>
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4'>
-        {products.slice(0, 4).map((product) => (
-          <div key={product.id} className="card w-96 bg-base-100 shadow-xl">
-            <figure>
-              <Image
-                className="object-cover w-full"
-                src={product.featuredImage ? product.featuredImage.url : "https://cdn.shopifycdn.net/s/files/1/0723/7559/9411/files/img-placeholder.jpg?v=1685346613"}
-                sizes="(min-width: 768px) 50vw, 100vw"
-                width={500}
-                height={500}
-                alt={product.title}
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">{product.title}</h2>
+        {products.slice(0, 8).map((product) => ( 
+            <div key={product.id} className='h-full'>
+              <Gallery product={product} />
             </div>
-          </div>
         ))}
       </div>
       <a href='/list' className='btn btn-primary mt-4'>View all</a>

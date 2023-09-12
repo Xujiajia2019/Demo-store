@@ -1,12 +1,27 @@
-import {ImageBanner} from '../components/ImageBanner';
-import { SampleProducts } from '@/components/SampleProducts';
+import { ImageBanner } from '@components/ImageBanner';
+import { FeaturedProducts } from '@components/products/FeaturedProducts';
+import { supabase } from '/api'
 
-export default function Index(initialData) {
+export default async function Index() {
+  async function getData () {
+    let {data, error} = await supabase
+    .from('Page data')
+    .select('data')
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .single()
+  if (data) {
+    return data.data
+  } else {
+    throw new Error(error)
+  }
+  }
+  const initialData = await getData()
   return (
     <>
       <div>
-        <ImageBanner {...initialData} />
-        <SampleProducts/>
+        <ImageBanner {...initialData.homepage_banner} />
+        <FeaturedProducts/>
       </div>
     </>
   );
