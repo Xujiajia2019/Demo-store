@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import {Header} from '../components/Header';
-import {Footer} from '../components/Footer';
+import {Header} from '@components/layout/Header';
+import {Footer} from '@components/layout/Footer';
 import { supabase } from '/api'
 import postcss from 'postcss';
 // import tailwindcss from 'tailwindcss';
@@ -35,17 +35,17 @@ export default async function RootLayout({ children }) {
   // const css = await generateCSS(initialData.design.primary_color)
 
   // console.log(`css${css}`)
-  const hslColor = hexToHSL(initialData.design.primary_color);
+  // const hslColor = hexToHSL(initialData.design.primary_color);
   return (
     <html lang="en">
       <head>
-      <style>
+      {/* <style>
         {`
           :root {
             --p: ${hslColor.hue} ${hslColor.saturation} ${hslColor.lightness};
           }
         `}
-      </style>
+      </style> */}
       </head>
       <body className={inter.className}>
         <Header initialData={initialData}/>

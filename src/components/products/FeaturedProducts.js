@@ -3,13 +3,13 @@ import { getProducts } from 'lib/shopify';
 import { Gallery } from '@components/products/Gallery';
 // import Link from 'next/link';
 
-export async function FeaturedProducts() {
-  async function fetchAllProducts() {
-    const response = await getProducts()
+export async function FeaturedProducts({ vendor }) {
+  async function fetchAllProducts(vendor) {
+    const response = await getProducts(vendor)
     const data = response
     return data
   }
-  const products = await fetchAllProducts()
+  const products = await fetchAllProducts(vendor)
   return (
     <section className='container mx-auto flex px-5 py-8 flex-col items-center'>
       <div className="flex flex-col items-baseline justify-between gap-4 px-6 py-8 sm:px-8 md:px-12 dark:from-contrast/60 dark:text-primary from-primary/60">
@@ -22,7 +22,7 @@ export async function FeaturedProducts() {
             </div>
         ))}
       </div>
-      <a href='/list' className='btn btn-primary mt-4'>View all</a>
+      {products.length > 4 ? <a href='/list' className='btn btn-primary mt-4'>View all</a> : null} 
     </section>
   );
 }

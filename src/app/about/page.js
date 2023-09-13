@@ -1,5 +1,5 @@
 import { ImageBanner } from '@components/ImageBanner';
-import { FeaturedProducts } from '@components/products/FeaturedProducts';
+import { Richtext } from '@components/Richtext';
 import { supabase } from '/api'
 
 export default async function Index() {
@@ -17,11 +17,24 @@ export default async function Index() {
   }
   }
   const initialData = await getData()
+
+  const heading = {
+    value: "About us"
+  }
+  let featuredImage = null
+  if (initialData?.brand?.brand_story?.featured_image) {
+    featuredImage = {
+      image: {
+        url: initialData.brand.brand_story.featured_image,
+        altText: "About us"
+      }
+    }
+  }
   return (
     <>
       <div>
-        <ImageBanner {...initialData.homepage_banner} cta="true"/>
-        <FeaturedProducts vendor={`${initialData.brand.basic_information.brand_name}-${initialData.brand.basic_information.vendor}`}/>
+        <ImageBanner figure={featuredImage} heading={heading} />
+        <Richtext content={initialData.brand.brand_story.brand_story} />
       </div>
     </>
   );

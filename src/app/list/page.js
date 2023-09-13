@@ -1,13 +1,31 @@
 import { getProducts } from 'lib/shopify';
 import { Gallery } from '@components/products/Gallery';
+import { supabase } from '/api'
+export const dynamic = 'force-dynamic'
 
 export default async function ProductLists() {
-  async function fetchAllProducts() {
-    const response = await getProducts()
+  async function getData () {
+    let {data, error} = await supabase
+    .from('Page data')
+    .select('data')
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .single()
+  if (data) {
+    return data.data
+  } else {
+    throw new Error(error)
+  }
+  }
+  const initialData = await getData()
+  const vendor = `${initialData.brand.basic_information.brand_name}-${initialData.brand.basic_information.vendor}`
+
+  async function fetchAllProducts(vendor) {
+    const response = await getProducts(vendor)
     const data = response
     return data
   }
-  const products = await fetchAllProducts()
+  const products = await fetchAllProducts(vendor)
   return (
     <section className='container py-8 mx-auto px-4'>
       {products.length === 0 ? (
