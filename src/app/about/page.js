@@ -17,7 +17,7 @@ export default async function Index() {
   if (initialData?.brand?.brand_story?.featured_image) {
     featuredImage = {
       image: {
-        url: initialData.brand.brand_story.featured_image,
+        url: initialData?.brand?.brand_story?.featured_image,
         altText: "About us"
       }
     }
@@ -26,7 +26,7 @@ export default async function Index() {
     <>
       <div>
         <ImageBanner figure={featuredImage} heading={heading} />
-        <Richtext content={initialData.brand.brand_story.brand_story} />
+        <Richtext content={initialData?.brand?.brand_story?.brand_story} />
       </div>
     </>
   );
