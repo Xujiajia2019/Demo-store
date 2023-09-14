@@ -1,0 +1,30 @@
+name: On Create Store
+run-name: User is creating a new store 🚀
+on: 
+  repository_dispatch:
+    types: 
+      - on-create-store
+permissions:
+  contents: write
+jobs:
+  checkout-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create and push new branch
+        run: |
+          git checkout -b ${{ github.event.client_payload.branch }}
+          git push origin ${{ github.event.client_payload.branch }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        run: |
+          vercel --prod
+          echo "Preview URL: https://$VERCEL_URL"
