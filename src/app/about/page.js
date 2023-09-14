@@ -1,22 +1,14 @@
 import { ImageBanner } from '@components/ImageBanner';
 import { Richtext } from '@components/Richtext';
-import { supabase } from '/api'
+import { getData } from 'lib/data';
 
 export default async function Index() {
-  async function getData () {
-    let {data, error} = await supabase
-    .from('Page data')
-    .select('data')
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single()
-  if (data) {
-    return data.data
-  } else {
-    throw new Error(error)
+  let initialData
+  try {
+    initialData = await getData();
+  } catch (error) {
+    console.error('Error:', error.message);
   }
-  }
-  const initialData = await getData()
 
   const heading = {
     value: "About us"

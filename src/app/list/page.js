@@ -1,23 +1,17 @@
 import { getProducts } from 'lib/shopify';
+import { getData } from 'lib/data';
 import { Gallery } from '@components/products/Gallery';
-import { supabase } from '/api'
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 export default async function ProductLists() {
-  async function getData () {
-    let {data, error} = await supabase
-    .from('Page data')
-    .select('data')
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single()
-  if (data) {
-    return data.data
-  } else {
-    throw new Error(error)
+  
+  let initialData
+  try {
+    initialData = await getData();
+  } catch (error) {
+    console.error('Error:', error.message);
   }
-  }
-  const initialData = await getData()
+
   const vendor = `${initialData.brand.basic_information.brand_name}-${initialData.brand.basic_information.vendor}`
 
   async function fetchAllProducts(vendor) {

@@ -2,29 +2,21 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import {Header} from '@components/layout/Header';
 import {Footer} from '@components/layout/Footer';
-import { supabase } from '/api'
+import { getData } from 'lib/data';
 import postcss from 'postcss';
 // import tailwindcss from 'tailwindcss';
 import { hexToHSL } from 'lib/utils';
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default async function RootLayout({ children }) {
-  async function getData () {
-    let {data, error} = await supabase
-    .from('Page data')
-    .select('data')
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single()
-    if (data) {
-      return data.data
-    } else {
-      throw new Error(error)
-    }
+  let initialData
+  try {
+    initialData = await getData();
+  } catch (error) {
+    console.error('Error:', error.message);
   }
-  const initialData = await getData()
 
   // async function generateCSS(primaryColor) {
   //   const hslColor = hexToHSL(primaryColor);
