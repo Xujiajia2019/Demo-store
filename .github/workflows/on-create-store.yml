@@ -17,14 +17,9 @@ jobs:
       - name: Create and push new branch
         run: |
           git checkout -b ${{ github.event.client_payload.branch }}
+          git config --global user.email "jessie@fstln.io"
+          git config --global user.name "jessiefandb"
+          git commit --allow-empty -m "Empty commit"
           git push origin ${{ github.event.client_payload.branch }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-
-      - name: Deploy to Vercel
-        run: |
-          vercel --prod
-          echo "Preview URL: https://$VERCEL_URL"
