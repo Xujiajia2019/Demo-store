@@ -8,7 +8,7 @@ export function ImageBanner({
     <section>
       <div className={ cta ? "hero h-10" : "hero h-4"} style={figure?.image?.url ? {backgroundImage: `url(${figure.image.url})`} : {}}>
         <div className="hero-overlay"></div>
-        <div className="hero-content text-center text-neutral-content">
+        <div className={ cta ? "hero-content hero-start" : "hero-content text-center"}>
           <div className="max-w-xl">
             {heading?.value && (
               <h1 className="mb-5 text-5xl font-bold">{heading.value}</h1>
