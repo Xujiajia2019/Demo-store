@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+        '4': '20rem',
+        '10': '45rem'
+      }
     }
   },
   daisyui: {

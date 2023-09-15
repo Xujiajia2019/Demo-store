@@ -27,17 +27,18 @@ export default async function RootLayout({ children }) {
   // const css = await generateCSS(initialData.design.primary_color)
 
   // console.log(`css${css}`)
-  // const hslColor = hexToHSL(initialData.design.primary_color);
+  const hslColor = hexToHSL(initialData?.design?.primary_color);
   return (
     <html lang="en">
       <head>
-      {/* <style>
-        {`
+      <style>
+        { hslColor ?
+        `
           :root {
             --p: ${hslColor.hue} ${hslColor.saturation} ${hslColor.lightness};
           }
-        `}
-      </style> */}
+        ` : null}
+      </style>
       </head>
       <body className={inter.className}>
         <Header initialData={initialData}/>

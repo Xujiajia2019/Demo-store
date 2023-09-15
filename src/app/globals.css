@@ -25,3 +25,14 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.hero-overlay {
+  --tw-bg-opacity: 0.1;
+}
+
+.hero-content {
+  width: 100%;
+  height: 100%;
+  justify-content: start;
+  text-align: start;
+}
