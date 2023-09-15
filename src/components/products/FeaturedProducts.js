@@ -4,6 +4,7 @@ import { Gallery } from '@components/products/Gallery';
 // import Link from 'next/link';
 
 export async function FeaturedProducts({ vendor }) {
+  console.log(vendor)
   async function fetchAllProducts(vendor) {
     const response = await getProducts(vendor)
     const data = response
