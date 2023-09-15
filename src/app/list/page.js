@@ -12,7 +12,7 @@ export default async function ProductLists() {
     console.error('Error:', error.message);
   }
 
-  const vendor = `${initialData?.brand?.basic_information?.brand_name}-${initialData?.brand?.basic_information?.vendor}`
+  const vendor = initialData?.brand?.basic_information?.vendor
 
   async function fetchAllProducts(vendor) {
     const response = await getProducts(vendor)
