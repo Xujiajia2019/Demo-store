@@ -15,7 +15,7 @@ export default async function Index() {
     <>
       <div>
         <ImageBanner {...initialData?.homepage_banner} cta="true"/>
-        <FeaturedProducts vendor={`${initialData?.brand?.basic_information?.brand_name}-${initialData?.brand?.basic_information?.vendor}`}/>
+        <FeaturedProducts vendor={initialData?.brand?.basic_information?.vendor}/>
       </div>
     </>
   );
