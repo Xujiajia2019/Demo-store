@@ -13,5 +13,5 @@ jobs:
         run: next build
       - name: Deploy
         uses: vercel/action@v20.0.0
-        with:
-          token: ${{ secrets.VERCEL_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
