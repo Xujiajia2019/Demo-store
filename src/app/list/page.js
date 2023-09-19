@@ -2,6 +2,7 @@ import { getProducts } from 'lib/shopify';
 import { getData } from 'lib/data';
 import { Gallery } from '@components/products/Gallery';
 // export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store';
 
 export default async function ProductLists() {
   
