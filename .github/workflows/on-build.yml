@@ -1,0 +1,8 @@
+- name: Clear Cache
+  run: rimraf .next
+- name: Build
+  run: next build
+- name: Deploy
+  uses: vercel/action@v20.0.0
+  with:
+    token: ${{ secrets.VERCEL_TOKEN }}
