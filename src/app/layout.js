@@ -7,7 +7,6 @@ import postcss from 'postcss';
 // import tailwindcss from 'tailwindcss';
 import { hexToHSL } from 'lib/utils';
 // export const dynamic = 'force-dynamic'
-export const fetchCache = 'force-no-store';
 
 const inter = Inter({ subsets: ['latin'] })
 

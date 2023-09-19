@@ -1,7 +1,6 @@
 import { ImageBanner } from '@components/ImageBanner';
 import { FeaturedProducts } from '@components/products/FeaturedProducts';
 import { getData } from 'lib/data';
-export const fetchCache = 'force-no-store';
 
 export default async function Index() {
   
