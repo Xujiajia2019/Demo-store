@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Logo from './Logo';
 
 export function Header({ initialData }) {
+  console.log(initialData?.brand?.basic_information?.brand_name)
   return (
     <header className="max-w-7xl mx-auto">
       <div className="navbar">
